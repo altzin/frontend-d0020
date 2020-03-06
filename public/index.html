@@ -1,82 +1,59 @@
 <!DOCTYPE html>
+<!-- Load d3.js -->
+<script src="https://d3js.org/d3.v5.js"></script>
+<script src="https://d3js.org/d3-dsv.v1.min.js"></script>
+<script src="https://d3js.org/d3-fetch.v1.min.js"></script>
+<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+<!-- Bootstrap -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+<body onload="eventNumberToHtml()">
+<!----------------- NAVBAR ------------------>
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">P2P SIM&VIS</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li><a href="#">Simulation</a></li>
+            <li class="active"><a href="#">Visualization</a></li>
+        </ul>
+    </div>
+</nav>
+    
 <h1>First html document</h1>
 
 <!-- Add a bit of text -->
-<p>This is my first thing using d3!</p>
+<p>NODES</p>
+<svg id="target"width="1800" height="300"></svg>
+<p>PIECHART</p>
 
-<!-- Create a div where the graph will take place -->
-<div id="my_dataviz"></div>
+<script src="nodes.js"></script>
 
+<svg id="target2"width="1800" height="300"></svg>
+<script src="piechart.js"></script>
 
-<p>This is my first thing using d3!</p>
+<!-- <div id="my_dataviz"></div> -->
 
-<svg id="target"width="600" height="900"></svg>
+<!-- Content -->
+<!--  script src="barchart.js"></script>  -->
 
-<!-- Load d3.js -->
-<script src="https://d3js.org/d3.v4.js"></script>
-<script src="chart.js"></script>
+<button onclick="removePie()">Remove</button>
+<button onclick="showPie()">Show</button>
+<button onclick="previousEvent()">Prev event</button>
+<button onclick="nextEvent()">Next event</button>
+<button onclick="resetEvent()">Reset events</button>
 
+<!-- Input field for traversing even numbers -->
+<p>
+    <label for="nValue"
+           style="display: inline-block; width: 240px; text-align: right">
 
-
-
-<script>
-
-    var svg = d3.select("#target"),
-        margin = 200,
-        width = svg.attr("width") - margin,
-        height = svg.attr("height") - margin
-
-    svg.append("text")
-        .attr("transform", "translate(100,0)")
-        .attr("x", 50)
-        .attr("y", 50)
-        .attr("font-size", "24px")
-        .text("XYZ Foods Stock Price")
-
-    var xScale = d3.scaleBand().range([0, width]).padding(0.4),
-        yScale = d3.scaleLinear().range([height, 0]);
-
-    var g = svg.append("g")
-        .attr("transform", "translate(" + 100 + "," + 100 + ")");
-
-    d3.csv("XYZ.csv", function (error, data) {
-        if (error) {
-            throw error;
-        }
-
-        xScale.domain(data.map(function (d) { return d.year; }));
-        yScale.domain([0, d3.max(data, function (d) { return d.value; })]);
-
-        g.append("g")
-            .attr("transform", "translate(0," + height + ")")
-            .call(d3.axisBottom(xScale))
-            .append("text")
-            .attr("y", height - 250)
-            .attr("x", width - 100)
-            .attr("text-anchor", "end")
-            .attr("stroke", "black")
-            .text("Year");
-
-        g.append("g")
-            .call(d3.axisLeft(yScale).tickFormat(function (d) {
-                return "$" + d;
-            })
-                .ticks(10))
-            .append("text")
-            .attr("transform", "rotate(-90)")
-            .attr("y", 6)
-            .attr("dy", "-5.1em")
-            .attr("text-anchor", "end")
-            .attr("stroke", "black")
-            .text("Stock Price");
-
-        g.selectAll(".bar")
-            .data(data)
-            .enter().append("rect")
-            .attr("class", "bar")
-            .attr("x", function (d) { return xScale(d.year); })
-            .attr("y", function (d) { return yScale(d.value); })
-            .attr("width", xScale.bandwidth())
-            .attr("height", function (d) { return height - yScale(d.value); });
-    });
-</script>
+        <!-- Input field for traversing even numbers -->
+<p>
+    <label for="nValue"
+           style="display: inline-block; width: 240px; text-align: right">
+        event number = <span id="nValue-value"></span>
+    </label>
+    <input type="number" min="0" max="50" step="1" value="0" id="nValue">
+</p>
