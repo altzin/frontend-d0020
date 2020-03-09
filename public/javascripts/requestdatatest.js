@@ -1,5 +1,20 @@
-var url = "http://localhost:8081/files/a657/a0.csv";
+const axios = require('axios')
 
-d3.csv(url).then(function(data) {
-    console.log(data[0]);
-  });
+
+async function postFileData(data) {
+
+    let url = "http://localhost:8081/process";
+
+    let res = await axios.post(url,data);
+
+    console.log(res.data);
+    
+}
+
+
+
+
+//postFileData();
+
+
+
