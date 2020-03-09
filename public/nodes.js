@@ -6,7 +6,7 @@ height = 350;
 var colorScale = ['orange', 'lightblue', '#B19CD9'];
 var xScale = d3.scaleLinear().domain([0, 1]).range([0, 1000]);
 
-var svg = d3.select('target').append('svg')
+var svg = d3.select('#target').append('svg')
     .attr('width', width)
     .attr('height', height);
 
