@@ -99,15 +99,9 @@ function updateNodes() {
             return d.y;
         })
     u.on("click", function(d,i) {
-        // if(dummy == 0){
-        //     initPie();
-        //     dummy++;
-        // }
-        // else
         if(d.clicked == 0)
         {
-            d3.select(this).style("fill","lightcoral");
-            d3.select(this).attr('r', d.radius*2);
+            d3.select(this).style("fill","blue").attr('r', d.radius*2);
             nodeMarked = i;
             csvFile();
             showPie();
@@ -115,8 +109,7 @@ function updateNodes() {
         }
         else
         {
-            d3.select(this).style("fill","#000");
-            d3.select(this).attr('r', d.radius);
+            d3.select(this).style("fill","#000").attr('r', d.radius);
             removePie();
             d.clicked--;
         }
@@ -161,6 +154,7 @@ function resetEvent(){
     d3.csv("node.csv").then(function (data) {
         updatePie({a: data[currentEvent].MAP, b: 1-data[currentEvent].MAP})
     })
+    csvFile();
     eventNumberToHtml()
 }
 //Event input field
