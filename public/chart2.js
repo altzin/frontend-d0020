@@ -7,7 +7,8 @@ margin = 10
 var radius = Math.min(width, height) / 2 - margin
 
 // append the svg object to the div called 'my_dataviz'
-var svg = d3.select('#target2').append('svg')
+var svg = d3.select('#target2')
+    .append("svg")
     .attr("width", width)
     .attr("height", height)
     .append("g")
@@ -43,7 +44,7 @@ function updatePie(data) {
             .outerRadius(radius)
         )
         .attr('fill', function (d) { return (color(d.data.key)) })
-        .attr("stroke", "black")
+        .attr("stroke", "white")
         .style("stroke-width", "2px")
         .style("opacity", 1)
 
@@ -53,10 +54,8 @@ function updatePie(data) {
         .remove()
 }
 function removePie() {
-    d3.select("tja").style("opacity", 0);
-    d3.select("tja2").style("opacity", 0);
+    d3.select("g").style("opacity", 0);
 }
 function showPie() {
-    d3.select("tja").style("opacity", 1);
-    d3.select("tja2").style("opacity", 1);
+    d3.select("g").style("opacity", 1);
 }
