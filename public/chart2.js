@@ -1,14 +1,13 @@
 // set the dimensions and margins of the graph
-var width = 450
-height = 450
-margin = 40
+var width = 300
+height = 300
+margin = 10
 
 // The radius of the pieplot is half the width or half the height (smallest one). I subtract a bit of margin.
 var radius = Math.min(width, height) / 2 - margin
 
-// append the svg object to the div called 'my_dataviz2'
+// append the svg object to the div called 'my_dataviz'
 var svg = d3.select('#target2').append('svg')
-    .append("tja")
     .attr("width", width)
     .attr("height", height)
     .append("g")
@@ -24,8 +23,8 @@ function updatePie(data) {
     console.log(data);
     // Compute the position of each group on the pie:
     var pie = d3.pie()
-        .value(function(d) {return d.value; })
-        .sort(function(a, b) { console.log(a) ; return d3.ascending(a.key, b.key);} ) // This make sure that group order remains the same in the pie chart
+        .value(function (d) { return d.value; })
+        .sort(function (a, b) { console.log(a); return d3.ascending(a.key, b.key); }) // This make sure that group order remains the same in the pie chart
     var data_ready = pie(d3.entries(data))
 
     // map to data
@@ -38,13 +37,13 @@ function updatePie(data) {
         .append('path')
         .merge(u)
         .transition()
-        .duration(0)
+        .duration(1)
         .attr('d', d3.arc()
             .innerRadius(0)
             .outerRadius(radius)
         )
-        .attr('fill', function(d){ return(color(d.data.key)) })
-        .attr("stroke", "white")
+        .attr('fill', function (d) { return (color(d.data.key)) })
+        .attr("stroke", "black")
         .style("stroke-width", "2px")
         .style("opacity", 1)
 
