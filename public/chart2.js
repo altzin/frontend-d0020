@@ -54,8 +54,8 @@ function updatePie(data) {
         .remove()
 }
 function removePie() {
-    d3.select("g").style("opacity", 0);
+    d3.select("#target2").style("opacity", 0);
 }
 function showPie() {
-    d3.select("g").style("opacity", 1);
+    d3.select("#target2").style("opacity", 1);
 }
