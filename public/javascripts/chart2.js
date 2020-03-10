@@ -53,6 +53,8 @@ function updatePie(data) {
         .exit()
         .remove()
 }
+
+//functions to display graphs
 function removePie() {
     d3.select("#target2").style("opacity", 0);
 }

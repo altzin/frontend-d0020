@@ -1,16 +1,20 @@
+//Variables
 var dummy = 0;
-var width = window.innerWidth,
+var width = window.innerWidth;
+var word = "node";
 height = 600;
 height = 350;
 
+//config for 
 var colorScale = ['orange', 'lightblue', '#B19CD9'];
 var xScale = d3.scaleLinear().domain([0, 1]).range([0, 1000]);
 
+//creating variable for the svg and attaching it to main svg
 var svg = d3.select('#target').append('svg')
     .attr('width', width)
     .attr('height', height);
 
-
+//setup links between nodes 
 var links = [
     {source: 0, target: 1},
     {source: 1, target: 2},
@@ -19,6 +23,7 @@ var links = [
     //{source: 4, target: 5}
 ];
 
+//setup for nodes
 var numNodes = 5;
 var nodes = d3.range(numNodes).map(function (d, i) {
     return {
@@ -29,6 +34,7 @@ var nodes = d3.range(numNodes).map(function (d, i) {
     }
 });
 
+//animatino for nodes entering
 var simulation = d3.forceSimulation(nodes)
 
     .force('collision', d3.forceCollide().radius(function (d) {
@@ -42,21 +48,7 @@ var simulation = d3.forceSimulation(nodes)
     .force('y', d3.forceY(0).strength(0))
     .on('tick', ticked);
 
-/*
-//Initialize the pie when entering the page
-function initPie() {
-    console.log("vafan")
-    d3.csv("nodes/node1.csv").then(function (data) {
-        updatePie({a: data[currentEvent].MAP, b: 1-data[currentEvent].MAP})
-
-    })
-    console.log("benis")
-    eventNumberToHtml()
-}
-
- */
-
-
+//draws links
 function updateLinks() {
     var u = d3.select('svg')
         .selectAll('line')
@@ -78,6 +70,8 @@ function updateLinks() {
         });
     u.exit().remove()
 }
+
+//draws cirles/nodes
 function updateNodes() {
     var u = d3.select('svg')
         .selectAll('circle')
@@ -101,7 +95,7 @@ function updateNodes() {
     u.on("click", function(d,i) {
         if(d.clicked == 0)
         {
-            d3.select(this).style("fill","blue").attr('r', d.radius*2);
+            d3.select(this).style("fill","blue").attr('r', d.radius*1.5);
             nodeMarked = i;
             csvFile();
             showPie();
@@ -117,12 +111,14 @@ function updateNodes() {
 
     u.exit().remove();
 }
-
 nodeMarked = -1;
 
+//update and traverse data for graphs
 function csvFile() {
     d3.csv("nodes/node"+nodeMarked+".csv").then(function (data) {
+        //data for piechart
         updatePie({a: data[currentEvent].MAP, b: 1-data[currentEvent].MAP});
+        //data for barchart
         updateBar([
             {group: `Event ${currentEvent}`, value: data[currentEvent].MAP},
             {group: `Event ${currentEvent+1}`, value: data[currentEvent+1].MAP},
@@ -133,12 +129,12 @@ function csvFile() {
 }
 let currentEvent=0;
 
+//Bottom buttons for graph management
 function nextEvent() {
     currentEvent++;
     csvFile();
     eventNumberToHtml()
 }
-
 function previousEvent() {
     if (currentEvent > 1) {
         currentEvent--;
@@ -147,7 +143,6 @@ function previousEvent() {
     }
     csvFile();
     eventNumberToHtml()
-
 }
 function resetEvent(){
     currentEvent = 0;
@@ -175,6 +170,7 @@ function updateInput(nValue) {
     eventNumberToHtml()
 }
 
+//debugging tool
 function print(data) {
     console.log(data);
 }
@@ -184,6 +180,7 @@ function ticked() {
     updateNodes();
 }
 
+//for printing event number to html
 function eventNumberToHtml() {
     document.getElementById("output").innerHTML = currentEvent;
 }

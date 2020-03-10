@@ -5,15 +5,9 @@ const axios = require('axios')
 var fs = require('fs');
 const popup = require('node-popup');
 
-
-
 // default options
 app.use(fileUpload());
 app.use(express.static('public'));
-
-
-
-
 
 app.get('/', (req, res) => {
 
@@ -32,7 +26,6 @@ app.get('/simulator/:id', (req, res) => {
     res.sendFile(__dirname + '/public/simulator.html');
 });
 
-
 app.post('/upload', function (req, res) {
     if (!req.files || Object.keys(req.files).length === 0) {
         return res.status(400).send('No files were uploaded.');
@@ -43,10 +36,8 @@ app.post('/upload', function (req, res) {
 
     let configData = JSON.parse(sampleFile.data);
 
-
     let url = "http://localhost:8081/process"; //url till backend
 
-    
     const getInfo = async () => {
         let res = await axios.post(url, configData)
         console.log(res.data);
@@ -57,10 +48,7 @@ app.post('/upload', function (req, res) {
 
     getInfo();
     
-    
-    
     res.redirect('/simulator');
-
 
 });
 
