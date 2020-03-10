@@ -10,9 +10,7 @@ var colorScale = ['orange', 'lightblue', '#B19CD9'];
 var xScale = d3.scaleLinear().domain([0, 1]).range([0, 1000]);
 
 //creating variable for the svg and attaching it to main svg
-var svg = d3.select('#target').append('svg')
-    .attr('width', width)
-    .attr('height', height);
+
 
 //setup links between nodes 
 var links = [
@@ -123,6 +121,7 @@ function csvFile() {
             {group: `Event ${currentEvent}`, value: data[currentEvent].MAP},
             {group: `Event ${currentEvent+1}`, value: data[currentEvent+1].MAP},
             {group: `Event ${currentEvent+2}`, value: data[currentEvent+2].MAP}]);
+        updateNodeLineChart(d3.range(data.length).map(function(d) { return {"y": data[d].MAP } }));
         print(data);
         console.log("fan");
     })

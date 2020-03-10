@@ -56,8 +56,10 @@ function updatePie(data) {
 
 //functions to display graphs
 function removePie() {
-    d3.select("#target2").style("opacity", 0);
+    d3.selectAll("#target2, #target3").style("opacity", 0);
+    d3.select("#target3").html("");
+
 }
 function showPie() {
-    d3.select("#target2").style("opacity", 1);
+    d3.selectAll("#target2, #target3").style("opacity", 1);
 }
