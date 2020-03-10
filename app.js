@@ -27,8 +27,8 @@ app.get('/', (req, res) => {
     // return res.end();
 });
 
-app.get('/simulator/:id', (req, res) => {
-
+app.get('/simulator', (req, res) => {
+    //var id = req.params.id; // /:id..med en templating engine kommer det här bli supersmidigt. vägen dit är nog krånglig. använd pug.
     res.sendFile(__dirname + '/public/simulator.html');
 });
 
@@ -59,7 +59,7 @@ app.post('/upload', function (req, res) {
     
     
     
-    res.redirect('/simulator');
+    res.redirect('/simulator'); //bör inte redirecta till sim. inte förrän alla filer är klara iaf.
 
 
 });
