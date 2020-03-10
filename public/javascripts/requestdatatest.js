@@ -1,20 +1,31 @@
-const axios = require('axios')
-
-
-async function postFileData(data) {
-
-    let url = "http://localhost:8081/process";
-
-    let res = await axios.post(url,data);
-
-    console.log(res.data);
-    
-}
+var express = require('express');
+var session = require('express-session');
+var cookieParser = require('cookie-parser');
+var flash = require('connect-flash');
+var app = express();
 
 
 
 
-//postFileData();
 
+app.use(cookieParser('secret'));
+app.use(session({
+    cookie: { maxAge: 60000 },
+    saveUninitialized: true,
+    resave: 'true',
+    secret: 'secret'
+}));
+app.use(flash());
 
+app.all('/', function(req, res){
+  req.flash('test', 'it worked');
+  res.redirect('/test')
+});
 
+app.all('/test', function(req, res){
+  res.send(JSON.stringify(req.flash('test')));
+});
+
+app.listen(3000);
+
+module.exports = app;
