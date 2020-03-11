@@ -14,12 +14,28 @@ app.use(express.static('public'));
 // get-route för hemsidan. Bör göras om.
 app.get('/', (req, res) => {
 
-    res.sendFile(__dirname + '/public/index.html');
     
+    res.sendFile(__dirname + '/public/tester.html');
+
 });
 
 app.get('/simulator', (req, res) => {
     //var id = req.params.id; // /:id..med en templating engine kommer det här bli supersmidigt. vägen dit är nog krånglig. använd pug.
+
+    let url = "http://localhost:8081/mostRecent"; //url till backend
+
+    const postData = async () => {
+        let res = await axios.get(url);
+        console.log(res.data);
+        return res.data;
+    }
+
+
+    var folder = postData();
+
+    
+
+
     res.sendFile(__dirname + '/public/simulator.html');
 });
 
@@ -35,7 +51,7 @@ app.post('/upload', function (req, res) {
 
 
     let url = "http://localhost:8081/process"; //url till backend
-    
+
     //postar data som laddats in av användaren till backend och returnerar simulations id.
     const postData = async () => {
         let res = await axios.post(url, configData)
@@ -46,8 +62,8 @@ app.post('/upload', function (req, res) {
     }
 
     postData();
-    
-    res.redirect('/'); 
+
+    res.redirect('/');
 
 
 });
