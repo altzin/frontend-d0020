@@ -32,6 +32,7 @@ var nodes = d3.range(numNodes).map(function (d, i) {
         clicked: 0
     }
 });
+console.log(nodes)
 
 //animatino for nodes entering
 var simulation = d3.forceSimulation(nodes)
@@ -81,6 +82,10 @@ function updateNodes() {
         .attr('r', function (d) {
             return d.radius;
         })
+        .attr('id', function(d){ 
+            return  d.index; 
+        })
+
         .style('fill', function (d) {
             return d.color;
         })
@@ -145,17 +150,26 @@ function csvFile() {
             {group: `Event ${currentEvent+1}`, value: data[currentEvent+1].MAP},
             {group: `Event ${currentEvent+2}`, value: data[currentEvent+2].MAP}]);
         updateNodeLineChart(d3.range(data.length).map(function(d) { return {"y": data[d].MAP } }));
-        print(data);
-        console.log("fan");
+        
+        
     })
 }
 let currentEvent=0;
 
 //Bottom buttons for graph management
 function resetNodes() {
-    d3.selectAll('circle').style("fill","#000").attr('r', d.radius);
-    d3.select("#target3").html("");
-    d3.select("#target5").html("");
+    d3.selectAll('circle').style("fill","#000");
+    for (let step = 0; step < 5; step++) {
+        // Runs 5 times, with values of step 0 through 4.
+
+        console.log(nodes[step]);
+        d3.selectAll('circle').style("fill","#000").attr('r', nodes[step].radius);
+        if (nodes[step].clicked == 1){
+            nodes[step].clicked = 0;
+        }
+        console.log(nodes[step]);
+      }
+    removePie();
 }
 function nextEvent() {
     currentEvent++;
