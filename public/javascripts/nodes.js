@@ -109,6 +109,9 @@ function updateNodes() {
             d.clicked++;
             eventNumberToHtml1()
         }
+        else if(d.clicked == 1) {
+            resetNodes()
+        }
         else
         {
             d3.select(this).attr('r', d.radius);
