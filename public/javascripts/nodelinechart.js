@@ -49,14 +49,13 @@ function updateNodeLineChart(data) {
         .attr("d", line); // 11. Calls the line generator
 
 // 12. Appends a circle for each datapoint
-<<<<<<< HEAD
     // svg3.selectAll(".dot")
     //     .data(data)
     //     .enter().append("circle") // Uses the enter().append() method
     //     .attr("class", "dot") // Assign a class for styling
-    //     .attr("cx", function(d, i) { return xScale(i) })
+    //     .attr("cx", function(d) { return xScale(d.x) })
     //     .attr("cy", function(d) { return yScale(d.y) })
-    //     .attr("r", 3)
+    //     .attr("r", 2)
     //     .on("mouseover", function(a, b, c) {
     //         //console.log(a)
     //         this.attr('class', 'focus')
@@ -65,22 +64,5 @@ function updateNodeLineChart(data) {
     //         svg3.selectAll('path').remove();
     //         svg3.selectAll('.dot').remove();
     //     })
-=======
-    svg3.selectAll(".dot")
-        .data(data)
-        .enter().append("circle") // Uses the enter().append() method
-        .attr("class", "dot") // Assign a class for styling
-        .attr("cx", function(d) { return xScale(d.x) })
-        .attr("cy", function(d) { return yScale(d.y) })
-        .attr("r", 2)
-        .on("mouseover", function(a, b, c) {
-            //console.log(a)
-            this.attr('class', 'focus')
-        })
-        .on("click", function() {
-            svg3.selectAll('path').remove();
-            svg3.selectAll('.dot').remove();
-        })
->>>>>>> 1ab4961429adc279b5a0f095f773afce892034b5
 }
 
