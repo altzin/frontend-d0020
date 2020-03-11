@@ -56,6 +56,7 @@ function updateLineChart(data) {
     svg3.append("path")
         .datum(data) // 10. Binds data to the line
         .attr("class", "line") // Assign a class for styling
+        .attr("stroke", "black")
         .attr("d", line); // 11. Calls the line generator
 
 // 12. Appends a circle for each datapoint

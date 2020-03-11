@@ -46,7 +46,9 @@ function updateNodeLineChart(data) {
     svg3.append("path")
         .datum(data) // 10. Binds data to the line
         .attr("class", "line") // Assign a class for styling
+        .attr("stroke", nodes[nodeMarked].color)
         .attr("d", line); // 11. Calls the line generator
+    console.log("nodes shizzle" + nodes[nodeMarked].color)
 
 // 12. Appends a circle for each datapoint
     // svg3.selectAll(".dot")
