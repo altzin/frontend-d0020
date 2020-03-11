@@ -4,7 +4,7 @@ function updateNodeLineChart(data, drawAxel) {
     // 1. Add the SVG to the page and employ #2
     // 2. Use the margin convention practice
 
-    var margin = {top: 50, right: 50, bottom: 200, left: 60},
+    var margin = {top: 10, right: 50, bottom: 200, left: 60},
         width = 700 - margin.left - margin.right,
         height = 540 - margin.top - margin.bottom;
 

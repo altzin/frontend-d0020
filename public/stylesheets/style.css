@@ -1,3 +1,8 @@
+/* Milkify body, hell to the yes. */
+body {
+    background-color: #fffaf6
+}
+
 /* Style the lines by removing the fill and applying a stroke */
 .line {
     fill: none;
@@ -47,6 +52,10 @@ line {
 
 h3 {
     text-align: center;
+}
+
+.lineChart {
+    float: left;
 }
 
 
