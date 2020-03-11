@@ -95,7 +95,6 @@ function updateNodes() {
         {
             d3.select(this).style("fill","blue").attr('r', d.radius*1.5);
             nodeMarked = i;
-            csvFile();
             showPie();
             d.clicked++;
         }

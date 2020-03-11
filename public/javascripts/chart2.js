@@ -61,5 +61,6 @@ function removePie() {
 
 }
 function showPie() {
+    csvFile();
     d3.selectAll("#target2, #target3").style("opacity", 1);
 }
