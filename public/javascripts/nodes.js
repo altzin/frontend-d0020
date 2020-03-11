@@ -24,12 +24,14 @@ var links = [
 
 //setup for nodes
 var numNodes = 5;
+nodeColors = d3.schemeCategory10;
 var nodes = d3.range(numNodes).map(function (d, i) {
     return {
         radius: 30,
         value: 0.2 * i,
         index: i,
-        clicked: 0
+        clicked: 0,
+        color: nodeColors[i]
     }
 });
 
@@ -99,7 +101,7 @@ function updateNodes() {
     u.on("click", function(d,i) {
         if(d.clicked == 0)
         {
-            d3.select(this).style("fill","blue").attr('r', d.radius*1.5);
+            d3.select(this).attr('r', d.radius*1.5);
             nodeMarked = i;
             csvFile();
             showPie();
@@ -108,7 +110,7 @@ function updateNodes() {
         }
         else
         {
-            d3.select(this).style("fill","#000").attr('r', d.radius);
+            d3.select(this).attr('r', d.radius);
             removePie();
             d.clicked--;
         }
@@ -155,10 +157,9 @@ let currentEvent=0;
 
 //Bottom buttons for graph management
 function resetNodes() {
-    d3.selectAll('circle').style("fill","#000");
     for (let step = 0; step < 5; step++) {
         // Runs 5 times, with values of step 0 through 4.
-        d3.selectAll('circle').style("fill","#000").attr('r', nodes[step].radius);
+        d3.selectAll('circle').attr('r', nodes[step].radius);
         if (nodes[step].clicked == 1){
             nodes[step].clicked = 0;
         }
