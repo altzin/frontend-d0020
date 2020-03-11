@@ -6,6 +6,7 @@ height = 600;
 height = 350;
 var projectID = null;
 var drawAxel = true;
+var drawAvgChart = true;
 //config for
 var colorScale = ['orange', 'lightblue', '#B19CD9'];
 var xScale = d3.scaleLinear().domain([0, 1]).range([0, 1000]);
@@ -140,6 +141,18 @@ function csvFile() {
             xmlhttp.send();
         }
     }
+    if(drawAvgChart){
+        drawAvgChart = false;
+        
+        d3.csv("http://localhost:8081/files/"+projectID+"/average.csv").then(function (data) {
+            console.log("wtf");
+            updateLineChart(d3.range(data.length).map(function(d) { return {"y": data[d].AVG_MAP , "x": data[d].TIME} }));
+            print("data: "+data);
+        })
+
+
+
+    }
     console.log("///////////////////////////////");
     console.log(projectID);
     console.log("///////////////////////////////");
@@ -154,6 +167,7 @@ function csvFile() {
         updateNodeLineChart(d3.range(data.length).map(function(d) { return {"y": data[d].MAP, "x": data[d].TIME } }), drawAxel);
         drawAxel = false;
         eventNumberToHtml2();
+
     })
 }
 let currentEvent=0;
@@ -230,7 +244,6 @@ function eventNumberToHtml() {
 function eventNumberToHtml1() {
     document.getElementById("output1").innerHTML = nodeMarked;
 }
-//for printing event number to html
 function eventNumberToHtml2() {
     document.getElementById("output2").innerHTML = projectID;
 }
