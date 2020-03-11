@@ -26,6 +26,7 @@
 </nav>
 
 <div class="bottombar">
+        <!--<button onclick="resetNodes()"class="btn btn-secondary">Reset Nodes</button>-->
         <button onclick="removePie()" class="btn btn-secondary">Remove</button>
         <button onclick="showPie()"class="btn btn-secondary">Show</button>
         <button onclick="previousEvent()"class="btn btn-secondary">Prev event</button>
@@ -37,6 +38,7 @@
 
 <!-- Add a bit of text -->
 <h4>Event number is:</h4><h4 id="output"></h4>
+<h4>Node number is:</h4><h4 id="output1"></h4>
 
 <svg id="target"></svg>
 <div id="chartz">
@@ -46,7 +48,7 @@
 
 <div class="average_line_chart">
     <h3>Average mAP data: </h3>
-    <svg id="target5" width="800" height="500"></svg>
+    <svg id="target5" width="1200" height="800"></svg>
 </div>
 
 <script src="javascripts/nodes.js"></script>

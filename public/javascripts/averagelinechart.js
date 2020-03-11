@@ -13,8 +13,8 @@
 function updateLineChart(data) {
     // 1. Add the SVG to the page and employ #2
     // 2. Use the margin convention practice
-    var margin = {top: 50, right: 30, bottom: 30, left: 30},
-        width = 600 - margin.left - margin.right,
+    var margin = {top: 50, right: 30, bottom: 30, left: 80},
+        width = 1000 - margin.left - margin.right,
         height = 400 - margin.top - margin.bottom;
 
 // The number of datapoints
@@ -65,7 +65,7 @@ function updateLineChart(data) {
         .attr("class", "dot") // Assign a class for styling
         .attr("cx", function(d, i) { return xScale(i) })
         .attr("cy", function(d) { return yScale(d.y) })
-        .attr("r", 5)
+        .attr("r", 3)
         .on("mouseover", function(a, b, c) {
             //console.log(a)
             this.attr('class', 'focus')

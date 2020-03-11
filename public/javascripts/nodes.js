@@ -97,6 +97,7 @@ function updateNodes() {
             nodeMarked = i;
             showPie();
             d.clicked++;
+            eventNumberToHtml1()
         }
         else
         {
@@ -128,6 +129,11 @@ function csvFile() {
 let currentEvent=0;
 
 //Bottom buttons for graph management
+function resetNodes() {
+    d3.selectAll('circle').style("fill","#000").attr('r', d.radius);
+    d3.select("#target3").html("");
+    d3.select("#target5").html("");
+}
 function nextEvent() {
     currentEvent++;
     csvFile();
@@ -164,4 +170,9 @@ function ticked() {
 //for printing event number to html
 function eventNumberToHtml() {
     document.getElementById("output").innerHTML = currentEvent;
+}
+
+//for printing event number to html
+function eventNumberToHtml1() {
+    document.getElementById("output1").innerHTML = nodeMarked;
 }

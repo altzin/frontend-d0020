@@ -56,7 +56,7 @@ function updateNodeLineChart(data) {
         .attr("class", "dot") // Assign a class for styling
         .attr("cx", function(d, i) { return xScale(i) })
         .attr("cy", function(d) { return yScale(d.y) })
-        .attr("r", 5)
+        .attr("r", 3)
         .on("mouseover", function(a, b, c) {
             //console.log(a)
             this.attr('class', 'focus')
