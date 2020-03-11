@@ -32,7 +32,7 @@ var nodes = d3.range(numNodes).map(function (d, i) {
         clicked: 0
     }
 });
-console.log(nodes)
+
 
 //animatino for nodes entering
 var simulation = d3.forceSimulation(nodes)
@@ -162,12 +162,12 @@ function resetNodes() {
     for (let step = 0; step < 5; step++) {
         // Runs 5 times, with values of step 0 through 4.
 
-        console.log(nodes[step]);
+        
         d3.selectAll('circle').style("fill","#000").attr('r', nodes[step].radius);
         if (nodes[step].clicked == 1){
             nodes[step].clicked = 0;
         }
-        console.log(nodes[step]);
+        
       }
     removePie();
 }
