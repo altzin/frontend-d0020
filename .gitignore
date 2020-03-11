@@ -111,3 +111,4 @@ dist
 node_modules
 
 todo.txt
+public/javascripts/test.js

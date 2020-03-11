@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="img/bootstrap-solid.svg">
+    <title>Home - Upload config</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+        integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <!-- Custom styles for this template -->
+    <link href="css/styles.css" rel="stylesheet">
+</head>
+
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">P2P SIM&VIS</a>
+        </div>
+        <ul class="nav navbar-nav">
+            
+            <li class="active"><a href="/simulator">Visualization</a></li>
+        </ul>
+    </div>
+</nav>
+
+<body>
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4">Upload your configuration files here!</h1>
+
+            <form class="" ref='uploadForm' id='uploadForm' action='http://localhost:8000/upload' method='post'
+                encType="multipart/form-data">
+
+               
+                <div class="form-group">
+                    <label for="file">File</label>
+                    <input type="file" class="form-control-file" name="sampleFile" />
+
+                </div>
+                
+                <input type='submit' class="btn btn-primary" value='Upload' />
+            </form>
+
+
+            <p class="lead">Navigate over to Visualization when the simulation files are done.</p>
+        </div>
+    </div>
+
+
+</html>

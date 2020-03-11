@@ -4,6 +4,7 @@ var width = window.innerWidth;
 var word = "node";
 height = 600;
 height = 350;
+var projectID = null;
 
 //config for 
 var colorScale = ['orange', 'lightblue', '#B19CD9'];
@@ -95,6 +96,7 @@ function updateNodes() {
         {
             d3.select(this).style("fill","blue").attr('r', d.radius*1.5);
             nodeMarked = i;
+            csvFile();
             showPie();
             d.clicked++;
             eventNumberToHtml1()
@@ -113,7 +115,28 @@ nodeMarked = -1;
 
 //update and traverse data for graphs
 function csvFile() {
-    d3.csv("nodes/node"+nodeMarked+".csv").then(function (data) {
+    if(projectID == null){
+        console.log("nu e vi h'r XDDDDDDD");
+        projectID = prompt("Ange simulationsid, tryck avbryt för senaste simulering", "");
+        if(projectID == null){
+            var xmlhttp = new XMLHttpRequest();
+            var mostRecentUrl = "http://localhost:8081/mostRecent";
+            console.log("BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBb");
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    console.log(this.responseText);
+                    var myObj = JSON.parse(this.responseText);
+                    projectID = myObj.simulationID;
+                    console.log(this.responseText);
+                    console.log(projectID+"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAASFSDGSEGWEGWEGFW")
+                }
+            };
+            xmlhttp.open("GET", mostRecentUrl, false);
+            xmlhttp.send();            
+        }
+    }
+
+    d3.csv("http://localhost:8081/files/"+projectID+"/"+nodeMarked+".csv").then(function (data) {
         //data for piechart
         updatePie({a: data[currentEvent].MAP, b: 1-data[currentEvent].MAP});
         //data for barchart
@@ -154,6 +177,23 @@ function resetEvent(){
         updatePie({a: data[currentEvent].MAP, b: 1-data[currentEvent].MAP})
     })
     csvFile();
+    eventNumberToHtml()
+}
+//Event input field
+// when the input range changes update value
+d3.select("#nValue").on("input", function() {
+    updateInput(+this.value);
+});
+
+// Initial update value
+updateInput(0);
+
+// adjust the text
+function updateInput(nValue) {
+    currentEvent = nValue;
+    d3.csv("node.csv").then(function (data) {
+        updatePie({a: data[currentEvent].MAP, b: 1-data[currentEvent].MAP})
+    })
     eventNumberToHtml()
 }
 
