@@ -22,18 +22,6 @@ app.get('/', (req, res) => {
 app.get('/simulator', (req, res) => {
     //var id = req.params.id; // /:id..med en templating engine kommer det här bli supersmidigt. vägen dit är nog krånglig. använd pug.
 
-    let url = "http://localhost:8081/mostRecent"; //url till backend
-
-    const postData = async () => {
-        let res = await axios.get(url);
-        console.log(res.data);
-        return res.data;
-    }
-
-
-    var folder = postData();
-
-    
 
 
     res.sendFile(__dirname + '/public/simulator.html');
