@@ -9,8 +9,7 @@ function updateNodeLineChart(data) {
         height = 540 - margin.top - margin.bottom;
 
 // The number of datapoints
-    var n = data.length;
-
+    var n = parseFloat(data[data.length-1].x) +parseFloat(data[data.length-1].x)*0.2;
 // 5. X scale will use the index of our data
     var xScale = d3.scaleLinear()
         .domain([0, n-1]) // input
@@ -23,7 +22,7 @@ function updateNodeLineChart(data) {
 
 // 7. d3's line generator
     var line = d3.line()
-        .x(function(d, i) { return xScale(i); }) // set the x values for the line generator
+        .x(function(d) { return xScale(d.x); }) // set the x values for the line generator
         .y(function(d) { return yScale(d.y); }) // set the y values for the line generator
         .curve(d3.curveMonotoneX) // apply smoothing to the line
     var svg3 = d3.select("#target3").append("svg")
@@ -54,9 +53,9 @@ function updateNodeLineChart(data) {
         .data(data)
         .enter().append("circle") // Uses the enter().append() method
         .attr("class", "dot") // Assign a class for styling
-        .attr("cx", function(d, i) { return xScale(i) })
+        .attr("cx", function(d) { return xScale(d.x) })
         .attr("cy", function(d) { return yScale(d.y) })
-        .attr("r", 3)
+        .attr("r", 2)
         .on("mouseover", function(a, b, c) {
             //console.log(a)
             this.attr('class', 'focus')
