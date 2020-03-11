@@ -5,7 +5,7 @@ var word = "node";
 height = 600;
 height = 350;
 var projectID = null;
-
+var drawAxel = true;
 //config for
 var colorScale = ['orange', 'lightblue', '#B19CD9'];
 var xScale = d3.scaleLinear().domain([0, 1]).range([0, 1000]);
@@ -113,6 +113,7 @@ function updateNodes() {
             d3.select(this).attr('r', d.radius);
             removePie();
             d.clicked--;
+            drawAxel = true;
         }
     });
 
@@ -139,7 +140,9 @@ function csvFile() {
             xmlhttp.send();
         }
     }
-
+    console.log("///////////////////////////////");
+    console.log(projectID);
+    console.log("///////////////////////////////");
     d3.csv("http://localhost:8081/files/"+projectID+"/"+nodeMarked+".csv").then(function (data) {
         //data for piechart
         updatePie({a: data[currentEvent].MAP, b: 1-data[currentEvent].MAP});
@@ -148,7 +151,8 @@ function csvFile() {
             {group: `Event ${currentEvent}`, value: data[currentEvent].MAP},
             {group: `Event ${currentEvent+1}`, value: data[currentEvent+1].MAP},
             {group: `Event ${currentEvent+2}`, value: data[currentEvent+2].MAP}]);
-        updateNodeLineChart(d3.range(data.length).map(function(d) { return {"y": data[d].MAP, "x": data[d].TIME } }));
+        updateNodeLineChart(d3.range(data.length).map(function(d) { return {"y": data[d].MAP, "x": data[d].TIME } }), drawAxel);
+        drawAxel = false;
 
 
     })
@@ -165,6 +169,7 @@ function resetNodes() {
         }
 
       }
+    drawAxel = true;
     removePie();
 }
 function nextEvent() {
