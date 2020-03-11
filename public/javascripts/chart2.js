@@ -58,7 +58,8 @@ function updatePie(data) {
 function removePie() {
     d3.selectAll("#target2, #target3").style("opacity", 0);
     d3.select("#target3").html("");
-
+    nodeMarked=null;
+    eventNumberToHtml1()
 
 }
 function showPie() {
