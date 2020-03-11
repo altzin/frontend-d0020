@@ -3,6 +3,10 @@ body {
     background-color: #fffaf6
 }
 
+h1 {
+    text-align:center;
+}
+
 /* Style the lines by removing the fill and applying a stroke */
 .line {
     fill: none;

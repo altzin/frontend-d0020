@@ -153,8 +153,7 @@ function csvFile() {
             {group: `Event ${currentEvent+2}`, value: data[currentEvent+2].MAP}]);
         updateNodeLineChart(d3.range(data.length).map(function(d) { return {"y": data[d].MAP, "x": data[d].TIME } }), drawAxel);
         drawAxel = false;
-
-
+        eventNumberToHtml2();
     })
 }
 let currentEvent=0;
@@ -230,4 +229,8 @@ function eventNumberToHtml() {
 //for printing event number to html
 function eventNumberToHtml1() {
     document.getElementById("output1").innerHTML = nodeMarked;
+}
+//for printing event number to html
+function eventNumberToHtml2() {
+    document.getElementById("output2").innerHTML = projectID;
 }
