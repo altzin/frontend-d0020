@@ -1,6 +1,6 @@
 
 
-function updateNodeLineChart(data, drawAxel) {
+function updateNodeLineChart(data) {
     // 1. Add the SVG to the page and employ #2
     // 2. Use the margin convention practice
 
@@ -32,7 +32,6 @@ function updateNodeLineChart(data, drawAxel) {
         .attr("transform", "translate(" + margin.left  + "," + margin.top /2.5 + ")");
 
 // 3. Call the x axis in a group tag
-    if(drawAxel){
     svg3.append("g")
         .attr("class", "x axis")
         .attr("transform", "translate(0," + height + ")")
@@ -42,7 +41,7 @@ function updateNodeLineChart(data, drawAxel) {
     svg3.append("g")
         .attr("class", "y axis")
         .call(d3.axisLeft(yScale)); // Create an axis component with d3.axisLeft
-    }
+
 // 9. Append the path, bind the data, and call the line generator
     svg3.append("path")
         .datum(data) // 10. Binds data to the line
