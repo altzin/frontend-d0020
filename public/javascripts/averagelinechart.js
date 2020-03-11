@@ -1,16 +1,8 @@
 // 8. An array of objects of length N. Each object has key -> value pair, the key being "y" and the value is a random number
 
-    d3.csv("nodes/average.csv").then(function (data) {
-        console.log("wtf");
-        let x = d3.range(data.length).map(function(d) { return {"y": data[d].MAP } });
-        print("data: "+data);
-        updateLineChart(x)
-    })
-
-
-
-
 function updateLineChart(data) {
+    console.log("HAHAHAHAHAHAHAHAHAHAHAAHAHAHAHAHAHAHAAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHA");
+    console.log(data);
     // 1. Add the SVG to the page and employ #2
     // 2. Use the margin convention practice
     var margin = {top: 10, right: 50, bottom: 200, left: 60},
@@ -18,7 +10,7 @@ function updateLineChart(data) {
         height = 540 - margin.top - margin.bottom;
 
 // The number of datapoints
-    var n = data.length;
+    var n = parseFloat(data[data.length-1].x) +parseFloat(data[data.length-1].x)*0.2;
 
 // 5. X scale will use the index of our data
     var xScale = d3.scaleLinear()
@@ -32,7 +24,7 @@ function updateLineChart(data) {
 
 // 7. d3's line generator
     var line = d3.line()
-        .x(function(d, i) { return xScale(i); }) // set the x values for the line generator
+        .x(function(d) { return xScale(d.x); }) // set the x values for the line generator
         .y(function(d) { return yScale(d.y); }) // set the y values for the line generator
         .curve(d3.curveMonotoneX) // apply smoothing to the line
     var svg3 = d3.select("#target5").append("svg")
