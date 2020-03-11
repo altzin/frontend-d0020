@@ -4,6 +4,11 @@
     stroke-width: 2;
 }
 
+/* Fills the lines between the nodes */
+line {
+    stroke: black;
+}
+
 .overlay {
     fill: none;
     pointer-events: all;
@@ -39,6 +44,11 @@
     display: table;
     margin: 0 auto;
 }
+
+h3 {
+    text-align: center;
+}
+
 
  /* Place the navbar at the bottom of the page, and make it stick */
 .bottombar {
