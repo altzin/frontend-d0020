@@ -13,9 +13,9 @@
 function updateLineChart(data) {
     // 1. Add the SVG to the page and employ #2
     // 2. Use the margin convention practice
-    var margin = {top: 50, right: 30, bottom: 30, left: 80},
-        width = 1000 - margin.left - margin.right,
-        height = 400 - margin.top - margin.bottom;
+    var margin = {top: 10, right: 50, bottom: 200, left: 60},
+        width = 700 - margin.left - margin.right,
+        height = 540 - margin.top - margin.bottom;
 
 // The number of datapoints
     var n = data.length;
@@ -59,18 +59,18 @@ function updateLineChart(data) {
         .attr("d", line); // 11. Calls the line generator
 
 // 12. Appends a circle for each datapoint
-    svg3.selectAll(".dot")
-        .data(data)
-        .enter().append("circle") // Uses the enter().append() method
-        .attr("class", "dot") // Assign a class for styling
-        .attr("cx", function(d, i) { return xScale(i) })
-        .attr("cy", function(d) { return yScale(d.y) })
-        .attr("r", 3)
-        .on("mouseover", function(a, b, c) {
-            //console.log(a)
-            this.attr('class', 'focus')
-        })
-        .on("mouseout", function() {  })
+    // svg3.selectAll(".dot")
+    //     .data(data)
+    //     .enter().append("circle") // Uses the enter().append() method
+    //     .attr("class", "dot") // Assign a class for styling
+    //     .attr("cx", function(d, i) { return xScale(i) })
+    //     .attr("cy", function(d) { return yScale(d.y) })
+    //     .attr("r", 3)
+    //     .on("mouseover", function(a, b, c) {
+    //         //console.log(a)
+    //         this.attr('class', 'focus')
+    //     })
+    //     .on("mouseout", function() {  })
 
 }
 

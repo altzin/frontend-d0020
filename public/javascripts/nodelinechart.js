@@ -5,7 +5,7 @@ function updateNodeLineChart(data) {
     // 2. Use the margin convention practice
 
     var margin = {top: 50, right: 50, bottom: 200, left: 60},
-        width = 510 - margin.left - margin.right,
+        width = 700 - margin.left - margin.right,
         height = 540 - margin.top - margin.bottom;
 
 // The number of datapoints
@@ -50,20 +50,20 @@ function updateNodeLineChart(data) {
         .attr("d", line); // 11. Calls the line generator
 
 // 12. Appends a circle for each datapoint
-    svg3.selectAll(".dot")
-        .data(data)
-        .enter().append("circle") // Uses the enter().append() method
-        .attr("class", "dot") // Assign a class for styling
-        .attr("cx", function(d, i) { return xScale(i) })
-        .attr("cy", function(d) { return yScale(d.y) })
-        .attr("r", 3)
-        .on("mouseover", function(a, b, c) {
-            //console.log(a)
-            this.attr('class', 'focus')
-        })
-        .on("click", function() {
-            svg3.selectAll('path').remove();
-            svg3.selectAll('.dot').remove();
-        })
+    // svg3.selectAll(".dot")
+    //     .data(data)
+    //     .enter().append("circle") // Uses the enter().append() method
+    //     .attr("class", "dot") // Assign a class for styling
+    //     .attr("cx", function(d, i) { return xScale(i) })
+    //     .attr("cy", function(d) { return yScale(d.y) })
+    //     .attr("r", 3)
+    //     .on("mouseover", function(a, b, c) {
+    //         //console.log(a)
+    //         this.attr('class', 'focus')
+    //     })
+    //     .on("click", function() {
+    //         svg3.selectAll('path').remove();
+    //         svg3.selectAll('.dot').remove();
+    //     })
 }
 

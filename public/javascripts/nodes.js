@@ -161,8 +161,6 @@ function resetNodes() {
     d3.selectAll('circle').style("fill","#000");
     for (let step = 0; step < 5; step++) {
         // Runs 5 times, with values of step 0 through 4.
-
-        
         d3.selectAll('circle').style("fill","#000").attr('r', nodes[step].radius);
         if (nodes[step].clicked == 1){
             nodes[step].clicked = 0;

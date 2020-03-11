@@ -40,15 +40,20 @@
 <h4>Event number is:</h4><h4 id="output"></h4>
 <h4>Node number is:</h4><h4 id="output1"></h4>
 
+<!-- nodes -->
 <svg id="target"></svg>
-<div id="chartz">
-    <svg id="target2" width="800" height="500"></svg>
-    <svg id="target3" width="800" height="500"></svg>
-</div>
 
+<!-- line charts -->
 <div class="average_line_chart">
-    <h3>Average mAP data: </h3>
-    <svg id="target5" width="1200" height="800"></svg>
+        <h3>Average mAP data for node / Average mAP data for all nodes: </h3>
+        <svg id="target3" width="800" height="500"></svg>
+        <svg id="target5" width="800" height="500"></svg>
+    </div>
+    
+<!-- pie and bar chart-->
+<div id="chartz">
+        <h3>mAP values for node on event/events </h3>
+    <svg id="target2" width="800" height="500"></svg>
 </div>
 
 <script src="javascripts/nodes.js"></script>
