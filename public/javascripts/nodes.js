@@ -121,19 +121,16 @@ nodeMarked = -1;
 //update and traverse data for graphs
 function csvFile() {
     if(projectID == null){
-        console.log("nu e vi h'r XDDDDDDD");
         projectID = prompt("Ange simulationsid, tryck avbryt för senaste simulering", "");
         if(projectID == null){
             var xmlhttp = new XMLHttpRequest();
             var mostRecentUrl = "http://localhost:8081/mostRecent";
-            console.log("BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBb");
             xmlhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
                     console.log(this.responseText);
                     var myObj = JSON.parse(this.responseText);
                     projectID = myObj.simulationID;
                     console.log(this.responseText);
-                    console.log(projectID+"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAASFSDGSEGWEGWEGFW")
                 }
             };
             xmlhttp.open("GET", mostRecentUrl, false);
@@ -149,7 +146,7 @@ function csvFile() {
             {group: `Event ${currentEvent}`, value: data[currentEvent].MAP},
             {group: `Event ${currentEvent+1}`, value: data[currentEvent+1].MAP},
             {group: `Event ${currentEvent+2}`, value: data[currentEvent+2].MAP}]);
-        updateNodeLineChart(d3.range(data.length).map(function(d) { return {"y": data[d].MAP } }));
+        updateNodeLineChart(d3.range(data.length).map(function(d) { return {"y": data[d].MAP, "x": data[d].TIME } }));
         
         
     })
