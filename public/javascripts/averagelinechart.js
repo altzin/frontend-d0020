@@ -1,5 +1,3 @@
-
-
 // 8. An array of objects of length N. Each object has key -> value pair, the key being "y" and the value is a random number
 
     d3.csv("nodes/average.csv").then(function (data) {
@@ -16,7 +14,7 @@ function updateLineChart(data) {
     // 1. Add the SVG to the page and employ #2
     // 2. Use the margin convention practice
     var margin = {top: 50, right: 30, bottom: 30, left: 30},
-        width = 460 - margin.left - margin.right,
+        width = 600 - margin.left - margin.right,
         height = 400 - margin.top - margin.bottom;
 
 // The number of datapoints

@@ -15,4 +15,3 @@ TIME,EVENT_TYPE,EVENT_SOURCE,EVENT_DESTINATION,MAP,INTERFERENCE
 7,Node_send_file,1,3,0.4,0
 9,Node_send_file,1,4,0.7,0
 10,Node_send_file,1,4,0.8,0
-

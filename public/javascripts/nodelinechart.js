@@ -6,7 +6,7 @@ function updateNodeLineChart(data) {
 
     var margin = {top: 50, right: 50, bottom: 200, left: 60},
         width = 510 - margin.left - margin.right,
-        height = 510 - margin.top - margin.bottom;
+        height = 540 - margin.top - margin.bottom;
 
 // The number of datapoints
     var n = data.length;
@@ -30,7 +30,7 @@ function updateNodeLineChart(data) {
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
         .append("g")
-        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+        .attr("transform", "translate(" + margin.left  + "," + margin.top /2.5 + ")");
 
 // 3. Call the x axis in a group tag
     svg3.append("g")

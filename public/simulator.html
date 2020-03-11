@@ -11,7 +11,8 @@
 <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
 
 <body onload="eventNumberToHtml()">
-<!----------------- NAVBAR ------------------>
+
+<!-- --------------- NAVBAR ---------------- -->
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -21,21 +22,26 @@
             <li><a href="#">Simulation</a></li>
             <li class="active"><a href="#">Visualization</a></li>
         </ul>
-    </div>
+    </div> 
 </nav>
 
-<h1>First html document</h1>
+<div class="bottombar">
+        <button onclick="removePie()" class="btn btn-secondary">Remove</button>
+        <button onclick="showPie()"class="btn btn-secondary">Show</button>
+        <button onclick="previousEvent()"class="btn btn-secondary">Prev event</button>
+        <button onclick="nextEvent()"class="btn btn-secondary">Next event</button>
+        <button onclick="resetEvent()"class="btn btn-secondary">Reset events</button>
+      </div> 
+
+<h1>Visualization</h1>
 
 <!-- Add a bit of text -->
-<p>NODES</p>
 <h4>Event number is:</h4><h4 id="output"></h4>
-<svg id="target"></svg>
-<p>PIECHART</p>
 
-<script src="javascripts/nodes.js"></script>
+<svg id="target"></svg>
 <div id="chartz">
-    <svg id="target2" width="800" height="400"></svg>
-    <svg id="target3" width="400" height="400"></svg>
+    <svg id="target2" width="800" height="500"></svg>
+    <svg id="target3" width="800" height="500"></svg>
 </div>
 
 <div class="average_line_chart">
@@ -43,24 +49,8 @@
     <svg id="target5" width="800" height="500"></svg>
 </div>
 
+<script src="javascripts/nodes.js"></script>
 <script src="javascripts/averagelinechart.js"></script>
 <script src="javascripts/chart2.js"></script>
 <script src="javascripts/barchart.js"></script>
 <script src="javascripts/nodelinechart.js"></script>
-
-
-<button onclick="removePie()">Remove</button>
-<button onclick="showPie()">Show</button>
-<button onclick="previousEvent()">Prev event</button>
-<button onclick="nextEvent()">Next event</button>
-<button onclick="resetEvent()">Reset events</button>
-
-<!-- Input field for traversing even numbers -->
-<p>
-    <label for="nValue"
-           style="display: inline-block; width: 240px; text-align: right">
-        event number = <span id="nValue-value"></span>
-    </label>
-    <input type="number" min="0" max="50" step="1" value="0" id="nValue">
-</p>
-</body>

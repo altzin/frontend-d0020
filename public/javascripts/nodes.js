@@ -95,7 +95,6 @@ function updateNodes() {
         {
             d3.select(this).style("fill","blue").attr('r', d.radius*1.5);
             nodeMarked = i;
-            csvFile();
             showPie();
             d.clicked++;
         }
@@ -149,23 +148,6 @@ function resetEvent(){
         updatePie({a: data[currentEvent].MAP, b: 1-data[currentEvent].MAP})
     })
     csvFile();
-    eventNumberToHtml()
-}
-//Event input field
-// when the input range changes update value
-d3.select("#nValue").on("input", function() {
-    updateInput(+this.value);
-});
-
-// Initial update value
-updateInput(0);
-
-// adjust the text
-function updateInput(nValue) {
-    currentEvent = nValue;
-    d3.csv("node.csv").then(function (data) {
-        updatePie({a: data[currentEvent].MAP, b: 1-data[currentEvent].MAP})
-    })
     eventNumberToHtml()
 }
 
