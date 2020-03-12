@@ -208,24 +208,7 @@ function resetEvent(){
         updatePie({a: data[currentEvent].MAP, b: 1-data[currentEvent].MAP})
     })
     csvFile();
-    eventNumberToHtml()
-}
-//Event input field
-// when the input range changes update value
-d3.select("#nValue").on("input", function() {
-    updateInput(+this.value);
-});
-
-// Initial update value
-updateInput(0);
-
-// adjust the text
-function updateInput(nValue) {
-    currentEvent = nValue;
-    d3.csv("node.csv").then(function (data) {
-        updatePie({a: data[currentEvent].MAP, b: 1-data[currentEvent].MAP})
-    })
-    eventNumberToHtml()
+    eventNumberToHtml();
 }
 
 //debugging tool
@@ -250,3 +233,15 @@ function eventNumberToHtml1() {
 function eventNumberToHtml2() {
     document.getElementById("output2").innerHTML = projectID;
 }
+
+//slider
+var slider = document.getElementById("myRange");
+var outputslider = document.getElementById("output");
+outputslider.innerHTML = slider.value;
+// Update the current slider value (each time you drag the slider handle)
+slider.oninput = function() {
+    currentEvent = slider.value;
+    csvFile();
+    eventNumberToHtml();
+}
+
