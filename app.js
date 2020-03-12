@@ -19,7 +19,7 @@ app.get('/', (req, res) => {
 
 });
 
-app.get('/simulator', (req, res) => {
+app.get('/visualization', (req, res) => {
     //var id = req.params.id; // /:id..med en templating engine kommer det här bli supersmidigt. vägen dit är nog krånglig. använd pug.
 
 
@@ -51,7 +51,7 @@ app.post('/upload', function (req, res) {
 
     postData();
 
-    res.redirect('/');
+    res.redirect('/visualization');
 
 
 });
