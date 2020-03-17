@@ -127,6 +127,7 @@ nodeMarked = -1;
 
 //update and traverse data for graphs
 function csvFile() {
+    
     if(projectID == null){
         projectID = prompt("Ange simulationsid, tryck avbryt för senaste simulering", "");
         if(projectID == null){
@@ -148,11 +149,10 @@ function csvFile() {
         drawAvgChart = false;
         
         d3.csv("http://localhost:8081/files/"+projectID+"/average.csv").then(function (data) {
-            console.log("wtf");
+           
             updateLineChart(d3.range(data.length).map(function(d) { return {"y": data[d].AVG_MAP , "x": data[d].TIME} }));
-            print("data: "+data);
+            
         })
-
 
 
     }
@@ -211,10 +211,6 @@ function resetEvent(){
     eventNumberToHtml();
 }
 
-//debugging tool
-function print(data) {
-    console.log(data);
-}
 
 function ticked() {
     updateLinks();

@@ -63,6 +63,7 @@ function removePie() {
 
 }
 function showPie() {
-    csvFile();
+    
+    //csvFile(); överflödig, leder till dubbla request till backend
     d3.selectAll("#target2, #target3").style("opacity", 1);
 }

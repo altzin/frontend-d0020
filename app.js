@@ -13,8 +13,6 @@ app.use(express.static('public'));
 
 // get-route för hemsidan. Bör göras om.
 app.get('/', (req, res) => {
-
-    
     res.sendFile(__dirname + '/public/tester.html');
 
 });
