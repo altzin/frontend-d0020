@@ -36,6 +36,10 @@ To run the browser-sync reloadserver open another terminal and run the following
 npm run ui
 ```
 
+## Legacy
 
+This project is based on this repository. But we decided to split this into two separate repositories.
+
+https://github.com/andregossip/D0020E-grupp4
 
 
