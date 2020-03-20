@@ -50,23 +50,5 @@ function updateNodeLineChart(data, drawAxel) {
         .attr("class", "line") // Assign a class for styling
         .attr("stroke", nodes[nodeMarked].color)
         .attr("d", line); // 11. Calls the line generator
-    console.log("nodes shizzle" + nodes[nodeMarked].color)
-
-// 12. Appends a circle for each datapoint
-    // svg3.selectAll(".dot")
-    //     .data(data)
-    //     .enter().append("circle") // Uses the enter().append() method
-    //     .attr("class", "dot") // Assign a class for styling
-    //     .attr("cx", function(d) { return xScale(d.x) })
-    //     .attr("cy", function(d) { return yScale(d.y) })
-    //     .attr("r", 2)
-    //     .on("mouseover", function(a, b, c) {
-    //         //console.log(a)
-    //         this.attr('class', 'focus')
-    //     })
-    //     .on("click", function() {
-    //         svg3.selectAll('path').remove();
-    //         svg3.selectAll('.dot').remove();
-    //     })
 }
 

@@ -61,4 +61,4 @@ function updateBar(data) {
 }
 
 // Initialize the plot with the first dataset
-updateBar(data1)
+//updateBar(data1)

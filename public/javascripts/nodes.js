@@ -1,18 +1,11 @@
 //Variables
-var dummy = 0;
 var width = window.innerWidth;
-var word = "node";
 height = 600;
 height = 350;
 var projectID = null;
 var drawAxel = true;
 var drawAvgChart = true;
-//config for
-var colorScale = ['orange', 'lightblue', '#B19CD9'];
 var xScale = d3.scaleLinear().domain([0, 1]).range([0, 1000]);
-
-//creating variable for the svg and attaching it to main svg
-
 
 //setup links between nodes
 var links = [
@@ -25,7 +18,9 @@ var links = [
 
 //setup for nodes
 var numNodes = 5;
-nodeColors = d3.schemeCategory10;
+nodeColors = d3.schemeCategory10; //Color scheme
+
+//Generates the nodes objects
 var nodes = d3.range(numNodes).map(function (d, i) {
     return {
         radius: 30,
@@ -37,7 +32,7 @@ var nodes = d3.range(numNodes).map(function (d, i) {
 });
 
 
-//animatino for nodes entering
+//animation for nodes entering
 var simulation = d3.forceSimulation(nodes)
 
     .force('collision', d3.forceCollide().radius(function (d) {
@@ -105,9 +100,9 @@ function updateNodes() {
             d3.select(this).attr('r', d.radius*1.5);
             nodeMarked = i;
             csvFile();
-            showPie();
+            showGraphs();
             d.clicked++;
-            eventNumberToHtml1()
+            nodeMarkedToHtml()
         }
         else if(d.clicked == 1) {
             resetNodes()
@@ -115,7 +110,7 @@ function updateNodes() {
         else
         {
             d3.select(this).attr('r', d.radius);
-            removePie();
+            removeGraphs();
             d.clicked--;
             drawAxel = true;
         }
@@ -123,7 +118,7 @@ function updateNodes() {
 
     u.exit().remove();
 }
-nodeMarked = -1;
+nodeMarked = -1; //Node -1 doesnt exist, good for init
 
 //update and traverse data for graphs
 function csvFile() {
@@ -149,16 +144,11 @@ function csvFile() {
         drawAvgChart = false;
         
         d3.csv("http://localhost:8081/files/"+projectID+"/average.csv").then(function (data) {
-           
             updateLineChart(d3.range(data.length).map(function(d) { return {"y": data[d].AVG_MAP , "x": data[d].TIME} }));
-            
         })
 
 
     }
-    console.log("///////////////////////////////");
-    console.log(projectID);
-    console.log("///////////////////////////////");
     d3.csv("http://localhost:8081/files/"+projectID+"/"+nodeMarked+".csv").then(function (data) {
         //data for piechart
         updatePie({a: data[currentEvent].MAP, b: 1-data[currentEvent].MAP});
@@ -169,7 +159,7 @@ function csvFile() {
             {group: `Event ${currentEvent+2}`, value: data[currentEvent+2].MAP}]);
         updateNodeLineChart(d3.range(data.length).map(function(d) { return {"y": data[d].MAP, "x": data[d].TIME } }), drawAxel);
         drawAxel = false;
-        eventNumberToHtml2();
+        projectNumberToHtml();
 
     })
 }
@@ -186,7 +176,7 @@ function resetNodes() {
 
       }
     drawAxel = true;
-    removePie();
+    removeGraphs();
 }
 function nextEvent() {
     currentEvent++;
@@ -223,14 +213,14 @@ function eventNumberToHtml() {
 }
 
 //for printing event number to html
-function eventNumberToHtml1() {
+function nodeMarkedToHtml() {
     document.getElementById("output1").innerHTML = nodeMarked;
 }
-function eventNumberToHtml2() {
+function projectNumberToHtml() {
     document.getElementById("output2").innerHTML = projectID;
 }
 
-//slider
+//SLIDER IS UNDER CONSTRUCTION (Events doesn't update properly) !!!
 var slider = document.getElementById("myRange");
 var outputslider = document.getElementById("output");
 outputslider.innerHTML = slider.value;

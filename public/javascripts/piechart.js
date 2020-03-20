@@ -54,16 +54,14 @@ function updatePie(data) {
         .remove()
 }
 
-//functions to display graphs
-function removePie() {
+//Hides the graphs
+function removeGraphs() {
     d3.selectAll("#target2, #target3").style("opacity", 0);
     d3.select("#target3").html("");
     nodeMarked=null;
-    eventNumberToHtml1()
+    nodeMarkedToHtml();
 
 }
-function showPie() {
-    
-    //csvFile(); överflödig, leder till dubbla request till backend
+function showGraphs() {
     d3.selectAll("#target2, #target3").style("opacity", 1);
 }

@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <!-- Load d3.js -->
+<!-- The charts are fetched from https://www.d3-graph-gallery.com/ and modified by us. -->
+
 <script src="https://d3js.org/d3.v5.js"></script>
 <script src="https://d3js.org/d3-dsv.v1.min.js"></script>
 <script src="https://d3js.org/d3-fetch.v1.min.js"></script>
@@ -31,7 +33,7 @@
         <button onclick="nextEvent()"class="btn btn-secondary">Next event</button>
         <button onclick="resetEvent()"class="btn btn-secondary">Reset events</button>
         Event number is : <b id="output"></b> ,
-        Node number is: <b id="output1"></b> ,
+        Node number is: <b id="output1"></b>
         <!-- input slider -->
         <div class="slidecontainer">
         <input type="range" min="1" max="99" value="0" class="slider" id="myRange">
@@ -63,6 +65,6 @@
 
 <script src="javascripts/nodes.js"></script>
 <script src="javascripts/averagelinechart.js"></script>
-<script src="javascripts/chart2.js"></script>
+<script src="javascripts/piechart.js"></script>
 <script src="javascripts/barchart.js"></script>
 <script src="javascripts/nodelinechart.js"></script>

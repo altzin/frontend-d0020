@@ -1,7 +1,6 @@
 // 8. An array of objects of length N. Each object has key -> value pair, the key being "y" and the value is a random number
 
 function updateLineChart(data) {
-    console.log("HAHAHAHAHAHAHAHAHAHAHAAHAHAHAHAHAHAHAAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHA");
     console.log(data);
     // 1. Add the SVG to the page and employ #2
     // 2. Use the margin convention practice
@@ -50,20 +49,6 @@ function updateLineChart(data) {
         .attr("class", "line") // Assign a class for styling
         .attr("stroke", "black")
         .attr("d", line); // 11. Calls the line generator
-
-// 12. Appends a circle for each datapoint
-    // svg3.selectAll(".dot")
-    //     .data(data)
-    //     .enter().append("circle") // Uses the enter().append() method
-    //     .attr("class", "dot") // Assign a class for styling
-    //     .attr("cx", function(d, i) { return xScale(i) })
-    //     .attr("cy", function(d) { return yScale(d.y) })
-    //     .attr("r", 3)
-    //     .on("mouseover", function(a, b, c) {
-    //         //console.log(a)
-    //         this.attr('class', 'focus')
-    //     })
-    //     .on("mouseout", function() {  })
 
 }
 
